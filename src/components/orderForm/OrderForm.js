@@ -6,7 +6,9 @@ function OrderForm({ updateOrders }) {
     item: '', 
     quantity: 0, 
     table_no: 0, 
-    note: ''
+    note: '',
+    pending: false,
+    time: 0
   })
 
   const [orderItem, setOrderItem] = useState('');
@@ -37,6 +39,7 @@ function OrderForm({ updateOrders }) {
     copiedOrder.quantity = orderQuantity;
     copiedOrder.table_no = orderTableNo;
     copiedOrder.note = orderNote;
+    copiedOrder.pending = true;
     setOrder(copiedOrder);
     updateOrders(copiedOrder);
     setOrder({
@@ -62,10 +65,10 @@ function OrderForm({ updateOrders }) {
           Item:
           <select id="food-item" onChange={handleItem} placeholder="Hamburger">
             <option value="select">Select an Item</option>
-            <option value="hamburger">Hamburger</option>
-            <option value="fries">Fries</option>
-            <option value="ribeye steak">RibEye Steak</option>
-            <option value="chicken alfredo fettucine">Chicken Alfredo Fettucine</option>
+            <option value="Hamburger">Hamburger</option>
+            <option value="Fries">Fries</option>
+            <option value="Ribeye Steak">RibEye Steak</option>
+            <option value="Chicken Alfredo Fettucine">Chicken Alfredo Fettucine</option>
           </select>
         </label>
 

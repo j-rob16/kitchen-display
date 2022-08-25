@@ -25,6 +25,7 @@ function App() {
       {openOrder === 'openOrder' && <OrderForm updateOrders={updateOrders}/>}
       {openOrder && <button onClick={() => setOpenOrder('')} >Order</button>}
 
+      {/* make appearance conditional on !orders */}
       <PendingOrders orders={orders}/>
       <PerformanceTracking />
     </>
