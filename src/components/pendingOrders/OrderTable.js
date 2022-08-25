@@ -1,6 +1,7 @@
 import React from "react";
 
 import Timer from "./Timer"
+import { Table, TableContainer } from './PendingOrdersStyles';
 
 function OrderTable({orders}) {
 
@@ -29,22 +30,24 @@ function OrderTable({orders}) {
   })
 
   return (
-    <table>
-      {/* <th> */}
-        <tr>
-          <th>Table No.</th>
-          <th>Item</th>
-          <th>Qty.</th>
-          <th>Note</th>
-          <th>Time</th>
-          <th></th>
-          <th></th>
-        </tr>
-      {/* </th> */}
-      {/* <tb> */}
-        {orderRow}
-      {/* </tb> */}
-    </table>
+    <TableContainer>
+      <Table>
+        <th>
+          <tr>
+            <th>Table No.</th>
+            <th>Item</th>
+            <th>Qty.</th>
+            <th>Note</th>
+            <th>Time</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </th>
+        <tb>
+          {orderRow}
+        </tb>
+      </Table>
+    </TableContainer>
   )
 }
 

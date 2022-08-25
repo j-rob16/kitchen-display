@@ -54,6 +54,7 @@ function OrderForm({ updateOrders }) {
     setOrderQuantity(0);
     setOrderTableNo(0);
     setOrderNote('');
+    evt.target.reset();
   }
 
  
@@ -65,8 +66,8 @@ function OrderForm({ updateOrders }) {
 
         <label>
           Item:
-          <select id="food-item" onChange={handleItem} placeholder="Hamburger">
-            <option value="select">Select an Item</option>
+          <select id="food-item" onChange={handleItem} placeholder="Hamburger" required>
+            <option value="select" disabled>Select an Item</option>
             <option value="Hamburger">Hamburger</option>
             <option value="Fries">Fries</option>
             <option value="Ribeye Steak">RibEye Steak</option>
@@ -76,8 +77,8 @@ function OrderForm({ updateOrders }) {
 
         <label>
           Quantity:
-          <select id="item-quantity" onChange={handleQuantity} >
-            <option value="1">1</option>
+          <select name="Quantity" id="item-quantity" onChange={handleQuantity} >
+            <option value="1" selected>1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
@@ -93,7 +94,7 @@ function OrderForm({ updateOrders }) {
         <label htmlFor="note">
           Note:
         </label>
-        <input id="note" type="text" onChange={handleNote} />
+        <input id="note" type="text" onChange={handleNote}/>
 
         <SubmitButton type="submit" value="Add Order"/>
 
