@@ -8,6 +8,13 @@ import {Title} from './AppStyles.js';
 function App() {
 
   const [openOrder, setOpenOrder] = useState('openOrder');
+  const [orders, setOrders] = useState([]);
+
+  const updateOrders = (formOrder) => {
+    const copiedOrders = [...orders];
+    copiedOrders.push(formOrder);
+    setOrders(copiedOrders);
+  }
 
   return ( 
     <>
@@ -15,10 +22,10 @@ function App() {
 
       {/* New order button renders the order form field. On order submit, field will close  */}
       {!openOrder && <button onClick={() => setOpenOrder('openOrder')}>New Order</button>}
-      {openOrder === 'openOrder' && <OrderForm />}
+      {openOrder === 'openOrder' && <OrderForm updateOrders={updateOrders}/>}
       {openOrder && <button onClick={() => setOpenOrder('')} >Order</button>}
 
-      <PendingOrders />
+      <PendingOrders orders={orders}/>
       <PerformanceTracking />
     </>
 
