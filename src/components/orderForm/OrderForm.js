@@ -2,7 +2,12 @@ import React, {useState} from "react";
 
 function OrderForm({ updateOrders }) {
 
-  const [orders, setOrders] = useState([])
+  const [order, setOrder] = useState({
+    item: '', 
+    quantity: 0, 
+    table_no: 0, 
+    note: ''
+  })
 
   const [orderItem, setOrderItem] = useState('');
   const [orderQuantity, setOrderQuantity] = useState(0);
@@ -27,11 +32,19 @@ function OrderForm({ updateOrders }) {
 
   const saveNewOrder = (evt) => {
     evt.preventDefault();
-    const copiedOrders = [...orders];
-    copiedOrders.push({item: orderItem, quantity: orderQuantity, table_no: orderTableNo, note: orderNote});
-    setOrders(copiedOrders);
-    updateOrders(copiedOrders);
-    setOrders([]);
+    const copiedOrder = {order};
+    copiedOrder.item = orderItem;
+    copiedOrder.quantity = orderQuantity;
+    copiedOrder.table_no = orderTableNo;
+    copiedOrder.note = orderNote;
+    setOrder(copiedOrder);
+    updateOrders(copiedOrder);
+    setOrder({
+      item: '', 
+      quantity: 0, 
+      table_no: 0, 
+      note: ''
+    });
     setOrderItem('');
     setOrderQuantity(0);
     setOrderTableNo(0);

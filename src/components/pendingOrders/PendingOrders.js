@@ -1,8 +1,13 @@
 import React from "react";
+import OrderTable from "./OrderTable";
 
-function PendingOrders() {
+function PendingOrders({ orders }) {
   return (
-    <h2>Pending Orders</h2>
+    <>
+      <h2>Pending Orders</h2>
+      <OrderTable orders={orders} />
+    </>
+
   )
 }
 
