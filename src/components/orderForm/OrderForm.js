@@ -66,7 +66,7 @@ function OrderForm({ updateOrders }) {
 
         <label>
           Item:
-          <select id="food-item" onChange={handleItem} placeholder="Hamburger" required>
+          <select id="food-item" onChange={handleItem} defaultValue="Hamburger" required>
             <option value="select" disabled>Select an Item</option>
             <option value="Hamburger">Hamburger</option>
             <option value="Fries">Fries</option>
@@ -77,8 +77,8 @@ function OrderForm({ updateOrders }) {
 
         <label>
           Quantity:
-          <select name="Quantity" id="item-quantity" onChange={handleQuantity} >
-            <option value="1" selected>1</option>
+          <select name="Quantity" id="item-quantity" onChange={handleQuantity} defaultValue="1">
+            <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>

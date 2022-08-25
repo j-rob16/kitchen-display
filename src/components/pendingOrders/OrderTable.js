@@ -32,7 +32,7 @@ function OrderTable({orders}) {
   return (
     <TableContainer>
       <Table>
-        <th>
+        <thead>
           <tr>
             <th>Table No.</th>
             <th>Item</th>
@@ -42,10 +42,10 @@ function OrderTable({orders}) {
             <th></th>
             <th></th>
           </tr>
-        </th>
-        <tb>
+        </thead>
+        <tbody>
           {orderRow}
-        </tb>
+        </tbody>
       </Table>
     </TableContainer>
   )
