@@ -2,7 +2,8 @@ import React, {useEffect, useState} from "react";
 
 function Timer() {
 const [time, setTime] = useState(0);
-const [timerOn, setTimerOn] = useState(false);
+const [timerOn, setTimerOn] = useState(true);
+
 
 useEffect(() => {
     let interval = null;
@@ -17,7 +18,7 @@ useEffect(() => {
 
     return () => clearInterval(interval)
 
-}, [timerOn])
+}, [])
 
 return (
     <>

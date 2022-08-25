@@ -14,7 +14,7 @@ function OrderTable({orders}) {
           <td>{order.item}</td>
           <td>{order.quantity}</td>
           <td>{order.note}</td>
-          <td> <Timer /> </td>
+          <td> <Timer turnOn={order.pending}/> </td>
           <td>status</td>
           <td>{completeOrderButton(order)}</td>
         </tr>
@@ -24,16 +24,20 @@ function OrderTable({orders}) {
 
   return (
     <table>
-      <tr>
-        <th>Table No.</th>
-        <th>Item</th>
-        <th>Qty.</th>
-        <th>Note</th>
-        <th>Time</th>
-        <th>Status</th>
-        <th>Complete</th>
-      </tr>
-      {orderRow}
+      {/* <th> */}
+        <tr>
+          <th>Table No.</th>
+          <th>Item</th>
+          <th>Qty.</th>
+          <th>Note</th>
+          <th>Time</th>
+          <th>Status</th>
+          <th>Complete</th>
+        </tr>
+      {/* </th> */}
+      {/* <tb> */}
+        {orderRow}
+      {/* </tb> */}
     </table>
   )
 }
