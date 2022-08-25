@@ -1,22 +1,28 @@
+import React from "react";
+
 import Timer from "./Timer"
 
 function OrderTable({orders}) {
 
-  const completeOrderButton = (order) => {
-    return <button onClick={() => {order.pending = false}}>Complete Order</button>
+  const handleComplete = (evt) => {
+    const copiedOrders = [...orders];
+  }
+
+  const time = () => {
+    return <Timer />
   }
 
   const orderRow = orders.map((order) => {
-    if (order.pending === true) {
+    if (order.pending) {
       return (
         <tr>
           <td>{order.table_no}</td>
           <td>{order.item}</td>
           <td>{order.quantity}</td>
           <td>{order.note}</td>
-          <td> <Timer turnOn={order.pending}/> </td>
+          <td> {time()} </td>
           <td>status</td>
-          <td>{completeOrderButton(order)}</td>
+          <td><button value="false" onClick={handleComplete}>Complete Order</button></td>
         </tr>
       )
     }
@@ -31,8 +37,8 @@ function OrderTable({orders}) {
           <th>Qty.</th>
           <th>Note</th>
           <th>Time</th>
-          <th>Status</th>
-          <th>Complete</th>
+          <th></th>
+          <th></th>
         </tr>
       {/* </th> */}
       {/* <tb> */}

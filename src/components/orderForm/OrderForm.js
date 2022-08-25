@@ -34,7 +34,7 @@ function OrderForm({ updateOrders }) {
 
   const saveNewOrder = (evt) => {
     evt.preventDefault();
-    const copiedOrder = {order};
+    const copiedOrder = order;
     copiedOrder.item = orderItem;
     copiedOrder.quantity = orderQuantity;
     copiedOrder.table_no = orderTableNo;
