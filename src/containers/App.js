@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import OrderForm from '../components/orderForm/OrderForm.js';
 import PendingOrders from '../components/pendingOrders/PendingOrders.js';
 import PerformanceTracking from '../components/performanceTracking/PerformanceTracking.js';
-import {Title} from './AppStyles.js';
+import {Button, Header, Main, Title} from './AppStyles.js';
 
 function App() {
 
@@ -16,23 +16,21 @@ function App() {
     setOrders(copiedOrders);
   }
 
-  const completeOrder = (order) => {
-
-  }
-
   return ( 
-    <>
-      <Title> Kitchen Display </Title>
+    <Main>
+      <Header>
+        <Title> Kitchen Display </Title>
+      </Header>
 
       {/* New order button renders the order form field. On order submit, field will close  */}
-      {!openOrder && <button onClick={() => setOpenOrder('openOrder')}>New Order</button>}
+      {!openOrder && <Button onClick={() => setOpenOrder('openOrder')}>New Order</Button>}
       {openOrder === 'openOrder' && <OrderForm updateOrders={updateOrders}/>}
-      {openOrder && <button onClick={() => setOpenOrder('')} >Close Ordering Tab</button>}
+      {openOrder && <Button onClick={() => setOpenOrder('')} >Close Ordering Tab</Button>}
 
       {/* make appearance conditional on !orders */}
-      <PendingOrders orders={orders} completeOrder={completeOrder}/>
+      <PendingOrders orders={orders} />
       <PerformanceTracking />
-    </>
+    </Main>
 
   );
 }

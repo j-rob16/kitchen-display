@@ -1,5 +1,7 @@
 import React, {useState} from "react";
 
+import {Form, FormTitle, SubmitButton} from './OrderFormStyles';
+
 function OrderForm({ updateOrders }) {
 
   const [order, setOrder] = useState({
@@ -58,8 +60,8 @@ function OrderForm({ updateOrders }) {
 
   return (
     <>
-      <h2>New Order-</h2>
-      <form onSubmit={saveNewOrder}>
+      <FormTitle>New Order</FormTitle>
+      <Form onSubmit={saveNewOrder}>
 
         <label>
           Item:
@@ -93,9 +95,9 @@ function OrderForm({ updateOrders }) {
         </label>
         <input id="note" type="text" onChange={handleNote} />
 
-        <input type="submit" value="Add Order"/>
+        <SubmitButton type="submit" value="Add Order"/>
 
-      </form>
+      </Form>
     </>
   )
 }
