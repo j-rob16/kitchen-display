@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 
 function Timer() {
+
 const [time, setTime] = useState(0);
 const [timerOn, setTimerOn] = useState(true);
 
@@ -19,7 +20,7 @@ useEffect(() => {
 
   }, [])
 
-return (
+return(
   <>
     <div>
         <span>{("0" + Math.floor(time / 60000) % 100).slice(-2)}:</span>

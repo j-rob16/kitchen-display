@@ -1,15 +1,18 @@
 import React, {useState} from "react";
+import { Button, Typography, FormGroup, Card, CardContent, Grid, TextField, FormControl, Select, MenuItem, InputLabel } from "@material-ui/core";
 
-import {Form, FormTitle, SubmitButton} from './OrderFormStyles';
+import {Form, FormTitle, SubmitButton, useStyles} from './OrderFormStyles';
 
 function OrderForm({ updateOrders }) {
+
+  const classes = useStyles();
 
   const [order, setOrder] = useState({
     item: '', 
     quantity: 0, 
     table_no: 0, 
     note: '',
-    pending: false,
+    pending: true,
     time: 0
   })
 
@@ -57,50 +60,61 @@ function OrderForm({ updateOrders }) {
     evt.target.reset();
   }
 
- 
 
   return (
     <>
-      <FormTitle>New Order</FormTitle>
-      <Form onSubmit={saveNewOrder}>
+      <Typography variant="h5">New Order</Typography>
 
-        <label>
-          Item:
-          <select id="food-item" onChange={handleItem} required>
-            <option value="select">Select an Item</option>
-            <option value="Hamburger">Hamburger</option>
-            <option value="Fries">Fries</option>
-            <option value="Ribeye Steak">RibEye Steak</option>
-            <option value="Chicken Alfredo Fettucine">Chicken Alfredo Fettucine</option>
-          </select>
-        </label>
+      <Card>
+        <CardContent>
+          <Form onSubmit={saveNewOrder}>
 
-        <label>
-          Quantity:
-          <select name="Quantity" id="item-quantity" onChange={handleQuantity}>
-            <option value="1" selected>1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-        </label>
+            <Grid container spacing={1}>
+              <Grid xs={12} sm={6}>
+                <FormControl fullWidth>
+                  <InputLabel>Menu Item</InputLabel>
+                    <Select variant="outlined" label="Menu Item" id="food-item" onChange={handleItem} required fullWidth>
+                      <MenuItem value="Hamburger">Hamburger</MenuItem>
+                      <MenuItem value="Fries">Fries</MenuItem>
+                      <MenuItem value="Ribeye Steak">RibEye Steak</MenuItem>
+                      <MenuItem value="Chicken Alfredo Fettucine">Chicken Alfredo Fettucine</MenuItem>
+                    </Select>
+                </FormControl>
+              </Grid>
 
-        <label htmlFor="table-no">
-          Table No.:
-        </label>
-          <input id="table-no" type="text" onChange={handleTableNo} required placeholder="table #"/>
+              <Grid xs={12} sm={6}>
+                <FormControl fullWidth>
+                  <InputLabel>Quantity</InputLabel>
+                    <Select variant="outlined" label="Quantity" id="quantity" onChange={handleQuantity} required fullWidth>
+                      <MenuItem value="1">1</MenuItem>
+                      <MenuItem value="2">2</MenuItem>
+                      <MenuItem value="3">3</MenuItem>
+                      <MenuItem value="4">4</MenuItem>
+                      <MenuItem value="5">5</MenuItem>
+                      <MenuItem value="6">6</MenuItem>
+                      <MenuItem value="7">7</MenuItem>
+                      <MenuItem value="8">8</MenuItem>
+                    </Select>
+                </FormControl>
+              </Grid>
 
-        <label htmlFor="note">
-          Note:
-        </label>
-        <input id="note" type="text" onChange={handleNote} placeholder="notes "/>
+              <Grid xs={12} sm={6} item>
+                <TextField label="Table No." placeholder="Enter Table Number" variant="outlined" htmlFor="table_no" onChange={handleTableNo} fullWidth required/>
+              </Grid>
 
-        <SubmitButton type="submit" value="Add Order"/>
+              <Grid xs={12} sm={6} item>
+                <TextField label="Note" multiline rows={5} placeholder="Customer Order Notes" variant="outlined" htmlFor="note" onChange={handleNote} fullWidth/>
+              </Grid>
 
-      </Form>
+              <Button variant="contained" color="primary" fullWidth type="submit" value="Add Order">Submit Order</Button>
+
+            </Grid>
+          </Form>
+        </CardContent>
+      </Card>
     </>
   )
 }
 
 export default OrderForm;
+

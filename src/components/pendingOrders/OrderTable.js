@@ -1,27 +1,24 @@
-import React from "react";
+import React, {useState} from "react";
 
-import Timer from "./Timer"
 import { Table, TableContainer } from './PendingOrdersStyles';
 
-function OrderTable({orders}) {
+function OrderTable({orders, completeOrder}) {
+
+  const [completedOrders, setCompletedOrders] = useState(orders);
 
   const handleComplete = (evt) => {
-    const copiedOrders = [...orders];
+    completeOrder(evt);
   }
 
-  const time = () => {
-    return <Timer />
-  }
-
-  const orderRow = orders.map((order) => {
+  const orderRow = orders.map((order, index) => {
     if (order.pending) {
       return (
-        <tr>
+        <tr key={index}>
           <td>{order.table_no}</td>
           <td>{order.item}</td>
           <td>{order.quantity}</td>
           <td>{order.note}</td>
-          <td> {time()} </td>
+          <td>{order.time}</td>
           <td>status</td>
           <td><button value="false" onClick={handleComplete}>Complete Order</button></td>
         </tr>

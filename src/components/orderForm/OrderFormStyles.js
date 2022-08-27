@@ -1,5 +1,13 @@
 import styled from "styled-components";
 
+import { makeStyles } from "@material-ui/core/styles";
+
+export const useStyles = makeStyles((theme) => ({
+  slider: {
+    marginTop: '10px'
+  }
+}))
+
 export const FormTitle = styled.h2`
   padding-left: 1rem;
   padding-top: 1rem;
@@ -13,7 +21,7 @@ export const Form = styled.form`
   align-items: center;
   margin: 1rem;
   padding: 10px;
-  background-color: #b3b3b3;
+  /* background-color: #b3b3b3; */
   border-radius: 10px;
   border: 0.5px solid grey;
 `
