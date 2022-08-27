@@ -2,11 +2,18 @@ import React, {useState} from 'react';
 import { AppBar, Button, CssBaseline, Toolbar, Typography } from '@material-ui/core';
 import { Kitchen } from '@material-ui/icons';
 
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+
+import reducers from '../reducers/index.js';
+
 import OrderForm from '../components/orderForm/OrderForm.js';
 import PendingOrders from '../components/pendingOrders/PendingOrders.js';
 import Timer from '../components/pendingOrders/Timer.js';
 import PerformanceTracking from '../components/performanceTracking/PerformanceTracking.js';
 import {Header, Main, Title, useStyles} from './AppStyles.js';
+
+const store = createStore(reducers)
 
 function App() {
 
@@ -34,7 +41,8 @@ function App() {
   }
 
   return ( 
-    <>
+    <Provider store={store}>
+      <h1>TMRZ</h1>
       <CssBaseline />
       <AppBar position="relative">
         <Toolbar>
@@ -54,7 +62,7 @@ function App() {
       {/* make appearance conditional on !orders */}
       <PendingOrders orders={orders} completeOrder={completeOrder} />
       <PerformanceTracking />
-    </>
+    </Provider>
 
   );
 }
