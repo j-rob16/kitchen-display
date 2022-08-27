@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 
-import { Table, TableContainer } from './PendingOrdersStyles';
+import {Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@material-ui/core"
+
+// import { Table, TableContainer } from './PendingOrdersStyles';
 
 function OrderTable({orders, completeOrder}) {
 
@@ -11,38 +13,59 @@ function OrderTable({orders, completeOrder}) {
   }
 
   const orderRow = orders.map((order, index) => {
+
+    // const status = () => {
+    //   color = "";
+    //   if (order.time > 30) {
+    //     color = 'red';
+    //   } else if (15 < order.time <= 30) {
+    //     color = 'yellow';
+    //   } else {
+    //     color = 'red';
+    //   }
+    //   return color;
+    // }
+
     if (order.pending) {
       return (
-        <tr key={index}>
-          <td>{order.table_no}</td>
-          <td>{order.item}</td>
-          <td>{order.quantity}</td>
-          <td>{order.note}</td>
-          <td>{order.time}</td>
-          <td>status</td>
-          <td><button value="false" onClick={handleComplete}>Complete Order</button></td>
-        </tr>
+        <TableRow key={index}>
+          <TableCell align="right">{order.table_no}</TableCell>
+          <TableCell align="right">{order.item}</TableCell>
+          <TableCell align="right">{order.quantity}</TableCell>
+          <TableCell align="right">{order.note}</TableCell>
+          <TableCell align="right">{order.time}</TableCell>
+          <TableCell align="right">status</TableCell>
+          <TableCell align="right"><Button variant="outlined" value="false" onClick={handleComplete}>Complete Order</Button></TableCell>
+        </TableRow>
       )
     }
   })
 
   return (
-    <TableContainer>
-      <Table>
-        <thead>
-          <tr>
-            <th>Table No.</th>
-            <th>Item</th>
-            <th>Qty.</th>
-            <th>Note</th>
-            <th>Time</th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
+    <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            <TableCell align="center" colSpan={4}>
+              Food Order
+            </TableCell>
+            <TableCell align="center" colSpan={2}>
+              Status
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>Table No.</TableCell>
+            <TableCell align="right">Item</TableCell>
+            <TableCell align="right">Qty.</TableCell>
+            <TableCell align="right">Note</TableCell>
+            <TableCell align="right">Time</TableCell>
+            <TableCell align="right">Urgency</TableCell>
+            <TableCell align="right"></TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
           {orderRow}
-        </tbody>
+        </TableBody>
       </Table>
     </TableContainer>
   )

@@ -17,7 +17,7 @@ function App() {
 
   const updateOrders = (order) => {
     const copiedOrders = [...orders];
-    order.time = <Timer />;
+    order.timer = <Timer getTime={(time) => order.time = time}/>;
     order.id = orders.length + 1;
     copiedOrders.push(order);
     setOrders(copiedOrders);
