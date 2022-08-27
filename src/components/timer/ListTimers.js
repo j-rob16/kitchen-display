@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectTimer } from '../../actions';
+import TimerView from './TimerView';
 
 export const ListTimers = () => {
 
@@ -10,11 +11,11 @@ export const ListTimers = () => {
     <div>
       {timers.map((timer, i) => {
         return (
-          <div>
-            <h2>{timer.name}</h2>
-            <h1>{timer.time}</h1>
-            <button>Start</button>
-          </div>
+          <TimerView 
+            key={`timer-${i}`}
+            timer={timer}
+            index={i}
+          />
         )
       })}
     </div>

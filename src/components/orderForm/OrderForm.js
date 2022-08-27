@@ -45,6 +45,7 @@ function OrderForm({ updateOrders }) {
     copiedOrder.table_no = orderTableNo;
     copiedOrder.note = orderNote;
     copiedOrder.pending = true;
+    copiedOrder.start_time = Date.now();
     setOrder(copiedOrder);
     updateOrders(copiedOrder);
     setOrder({

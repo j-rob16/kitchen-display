@@ -42,7 +42,6 @@ function App() {
 
   return ( 
     <Provider store={store}>
-      <h1>TMRZ</h1>
       <CssBaseline />
       <AppBar position="relative">
         <Toolbar>
