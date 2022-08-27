@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 
-function Timer({getTime}) {
+function Timer() {
 
 const [time, setTime] = useState(0);
 const [timerOn, setTimerOn] = useState(true);
@@ -12,7 +12,6 @@ useEffect(() => {
   interval = setInterval(() => {
     setTime(prevTime => prevTime + 10)
   }, 10)
-  getTime(time)
   } else {
   clearInterval(interval)
   }

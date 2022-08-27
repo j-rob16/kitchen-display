@@ -4,7 +4,6 @@ import { Kitchen } from '@material-ui/icons';
 
 import OrderForm from '../components/orderForm/OrderForm.js';
 import PendingOrders from '../components/pendingOrders/PendingOrders.js';
-import Timer from '../components/pendingOrders/Timer.js';
 import PerformanceTracking from '../components/performanceTracking/PerformanceTracking.js';
 import {Header, Main, Title, useStyles} from './AppStyles.js';
 
@@ -17,19 +16,16 @@ function App() {
 
   const updateOrders = (order) => {
     const copiedOrders = [...orders];
-    order.timer = <Timer getTime={(time) => order.time = time}/>;
-    order.id = orders.length + 1;
+    order.id = orders.length;
     copiedOrders.push(order);
     setOrders(copiedOrders);
   }
 
   const completeOrder = (order) => {
     const copiedOrders = [...orders];
-    for (let i = 0; i < copiedOrders.length; i++) {
-      if (order.id === copiedOrders[i].id) {
-        copiedOrders[i].pending = false;
-      }
-    }
+    console.log(copiedOrders);
+    copiedOrders[order.id].pending = false;
+    copiedOrders[order.id].time_finish = Date.now();
     setOrders(copiedOrders);
   }
 
