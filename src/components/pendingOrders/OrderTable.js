@@ -16,6 +16,12 @@ function OrderTable({orders, completeOrder}) {
       completeOrder(order);
     }
 
+    const getStatus = () => {
+      const start = order.time_start;
+      let now = Date.now();
+      return Math.floor((now - start) / 1000) % 60;
+    }
+
     if (order.pending) {
       return (
         <TableRow key={index}>
@@ -24,7 +30,7 @@ function OrderTable({orders, completeOrder}) {
           <TableCell align="center">{order.quantity}</TableCell>
           <TableCell align="center">{order.note}</TableCell>
           <TableCell align="right">{order.time}</TableCell>
-          <TableCell align="right">status</TableCell>
+          <TableCell align="right">{getStatus()}</TableCell>
           <TableCell align="center"><Button variant="contained" value={order.id} onClick={handleComplete}>Complete Order</Button></TableCell>
         </TableRow>
       )

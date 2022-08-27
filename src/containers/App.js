@@ -48,8 +48,8 @@ function App() {
       {openOrder && <Button variant="outlined" className={classes.buttons} onClick={() => setOpenOrder('')} >Close Orders Tab</Button>}
 
       {/* make appearance conditional on !orders */}
-      <PendingOrders orders={orders} completeOrder={completeOrder} />
-      <PerformanceTracking />
+      {orders.length >= 1 && <PendingOrders orders={orders} completeOrder={completeOrder} />}
+      {orders.length >= 1 && <PerformanceTracking orders={orders}/>}
     </>
 
   );
