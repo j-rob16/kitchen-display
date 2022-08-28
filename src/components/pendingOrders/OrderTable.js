@@ -12,7 +12,6 @@ function OrderTable({orders, completeOrder}) {
   const orderRow = orders.map((order, index) => {
 
     const handleComplete = () => {
-      console.log({order});
       completeOrder(order);
     }
 

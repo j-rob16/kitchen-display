@@ -23,7 +23,6 @@ function App() {
 
   const completeOrder = (order) => {
     const copiedOrders = [...orders];
-    console.log(copiedOrders);
     copiedOrders[order.id].pending = false;
     copiedOrders[order.id].time_finish = Date.now();
     setOrders(copiedOrders);
@@ -49,7 +48,7 @@ function App() {
 
       {/* make appearance conditional on !orders */}
       {orders.length >= 1 && <PendingOrders orders={orders} completeOrder={completeOrder} />}
-      {orders.length >= 1 && <PerformanceTracking orders={orders}/>}
+      {orders.length >= 1 && <PerformanceTracking orders={orders} />}
     </>
 
   );
