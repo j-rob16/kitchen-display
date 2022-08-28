@@ -7,8 +7,6 @@ import Timer from "./Timer";
 
 function OrderTable({orders, completeOrder}) {
 
-
-
   const orderRow = orders.map((order, index) => {
 
     const handleComplete = () => {
@@ -28,9 +26,9 @@ function OrderTable({orders, completeOrder}) {
           <TableCell align="center">{order.table_no}</TableCell>
           <TableCell align="center">{order.quantity}</TableCell>
           <TableCell align="center">{order.note}</TableCell>
-          <TableCell align="right">{order.time}</TableCell>
-          <TableCell align="right">{getStatus()}</TableCell>
-          <TableCell align="center"><Button variant="contained" value={order.id} onClick={handleComplete}>Complete Order</Button></TableCell>
+          <TableCell align="right"><Timer /></TableCell>
+          <TableCell align="right"></TableCell>
+          <TableCell align="center"><Button variant="contained" color="primary" value={order.id} onClick={handleComplete}>Complete Order</Button></TableCell>
         </TableRow>
       )
     }
@@ -38,7 +36,7 @@ function OrderTable({orders, completeOrder}) {
 
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <Table aria-label="simple table">
         <TableHead>
           <TableRow>
             <TableCell align="center" colSpan={4}>

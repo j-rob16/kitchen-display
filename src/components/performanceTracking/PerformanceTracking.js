@@ -1,3 +1,4 @@
+import { Typography } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 
 function PerformanceTracking({ orders }) {
@@ -6,20 +7,20 @@ function PerformanceTracking({ orders }) {
   const [averageTime, setAverageTime] = useState(0);
 
   const getTimes = () => {
+    setTimes([]);
     for (let i = 0; i < orders.length; i++) {
       const copiedTimes = [...times];
-      if (orders[i].pending === false) {
+      if (orders[i].time_finish) {
         copiedTimes.push(orders[i].time_finish - orders[i].time_start);
         setTimes(copiedTimes);
       }
     }
-    return times;
   }
 
   const displayAverage = () => {
-    return Math.floor((times.reduce((prev, curr) => {
+    return (times.reduce((prev, curr) => {
       return prev + curr;
-    }, 0) / 1000) % 60) / times.length;
+    }, 0)) / times.length;
   }
 
   useEffect(() => {
@@ -32,9 +33,9 @@ function PerformanceTracking({ orders }) {
 
   return (
     <>
-      <h2>Performance Tracking</h2>
-      {averageTime}
-      {times.length}
+      <Typography variant="h5">Performance Tracking</Typography>
+      <p>Average Time:</p>
+     {Math.floor(averageTime / 1000) % 60}
     </>
     
   )

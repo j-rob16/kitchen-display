@@ -40,7 +40,6 @@ function OrderForm({ updateOrders }) {
     copiedOrder.note = orderNote;
     copiedOrder.pending = true;
     copiedOrder.time_start = Date.now();
-    copiedOrder.time = <Timer />
     setOrder(copiedOrder);
     updateOrders(copiedOrder);
     setOrder({

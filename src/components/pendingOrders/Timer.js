@@ -10,7 +10,7 @@ useEffect(() => {
 
   if (timerOn) {
   interval = setInterval(() => {
-    setTime(prevTime => prevTime + 10)
+    setTime(prevTime => prevTime + 10);
   }, 10)
   } else {
   clearInterval(interval)

@@ -1,10 +1,11 @@
+import { Typography } from "@material-ui/core";
 import React from "react";
 import OrderTable from "./OrderTable";
 
 function PendingOrders({ orders, completeOrder }) {
   return (
     <>
-      <h2>Pending Orders</h2>
+      <Typography variant="h5">Pending Orders</Typography>
       <OrderTable orders={orders} completeOrder={completeOrder} />
     </>
 
