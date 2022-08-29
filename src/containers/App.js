@@ -33,7 +33,7 @@ function App() {
       <CssBaseline />
       <AppBar position="relative">
         <Toolbar>
-          <Kitchen />
+          <Kitchen className={classes.icon}/>
           <Typography variant="h5">Kitchen Display</Typography>
         </Toolbar>
       </AppBar>

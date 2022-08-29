@@ -5,6 +5,9 @@ export const useStyles = makeStyles((theme) => ({
   buttons: {
     align: 'center',
     margin: '30px'
+  },
+  icon: {
+    marginRight: '20px'
   }
 }))
 

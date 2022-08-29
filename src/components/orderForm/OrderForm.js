@@ -1,8 +1,7 @@
 import React, {useState} from "react";
-import { Button, Typography, FormGroup, Card, CardContent, Grid, TextField, FormControl, Select, MenuItem, InputLabel } from "@material-ui/core";
+import { Button, Typography, Card, CardContent, Grid, TextField, FormControl, Select, MenuItem, InputLabel } from "@material-ui/core";
 
 import {Form, FormTitle, SubmitButton, useStyles} from './OrderFormStyles';
-import Timer from "../pendingOrders/Timer";
 
 function OrderForm({ updateOrders }) {
 
@@ -58,17 +57,17 @@ function OrderForm({ updateOrders }) {
 
   return (
     <>
-      <Typography variant="h5">New Order</Typography>
-
-      <Card>
+      <Card className={classes.container}>
+        <Typography className={classes.title} variant="h5">New Order</Typography>
         <CardContent>
           <Form onSubmit={saveNewOrder}>
 
             <Grid container spacing={1}>
+
               <Grid xs={12} sm={6} item={true}>
                 <FormControl fullWidth>
-                  <InputLabel>Menu Item</InputLabel>
-                    <Select variant="outlined" label="Menu Item" id="food-item" onChange={handleItem} required fullWidth>
+                  <InputLabel label="menu-item">Menu Item</InputLabel>
+                    <Select variant="outlined" labelId="menu-item" id="food-item" label="Menu Item" onChange={handleItem} required fullWidth>
                       <MenuItem value="Hamburger">Hamburger</MenuItem>
                       <MenuItem value="Fries">Fries</MenuItem>
                       <MenuItem value="Ribeye Steak">RibEye Steak</MenuItem>
@@ -98,7 +97,7 @@ function OrderForm({ updateOrders }) {
               </Grid>
 
               <Grid xs={12} sm={6} item={true}>
-                <TextField label="Note" multiline rows={5} placeholder="Customer Order Notes" variant="outlined" htmlFor="note" onChange={handleNote} fullWidth/>
+                <TextField label="Note" multiline rows={4} placeholder="Customer Order Notes" variant="outlined" htmlFor="note" onChange={handleNote} fullWidth/>
               </Grid>
 
               <Button variant="contained" color="primary" fullWidth type="submit" value="Add Order">Submit Order</Button>

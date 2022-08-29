@@ -1,4 +1,4 @@
-import { Typography } from "@material-ui/core";
+import { Card, CardContent, Typography } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 
 function PerformanceTracking({ orders }) {
@@ -32,11 +32,12 @@ function PerformanceTracking({ orders }) {
   }, [times])
 
   return (
-    <>
-      <Typography variant="h5">Performance Tracking</Typography>
-      <p>Average Time:</p>
-     {Math.floor(averageTime / 1000) % 60}
-    </>
+    <Card>
+      <CardContent>
+        <Typography variant="h5">Performance Tracking</Typography>
+        <Typography variant="h6">Average Time: {"0" + Math.floor(averageTime / 1000 / 60) % 60}:{Math.floor(averageTime / 1000) % 60} seconds</Typography>
+      </CardContent>
+    </Card>
     
   )
 }

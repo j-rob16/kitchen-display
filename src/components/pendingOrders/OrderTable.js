@@ -1,11 +1,13 @@
-import React, {useState} from "react";
+import React from "react";
 
-import {Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@material-ui/core"
+import {Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@material-ui/core"
 import Timer from "./Timer";
 
-// import { Table, TableContainer } from './PendingOrdersStyles';
+import { useStyles } from './PendingOrdersStyles';
 
 function OrderTable({orders, completeOrder}) {
+
+  const classes = useStyles();
 
   const orderRow = orders.map((order, index) => {
 
@@ -28,14 +30,15 @@ function OrderTable({orders, completeOrder}) {
           <TableCell align="center">{order.note}</TableCell>
           <TableCell align="right"><Timer /></TableCell>
           <TableCell align="right"></TableCell>
-          <TableCell align="center"><Button variant="contained" color="primary" value={order.id} onClick={handleComplete}>Complete Order</Button></TableCell>
+          <TableCell className={classes.button} align="center"><Button variant="contained" color="primary" value={order.id} onClick={handleComplete}>Complete Order</Button></TableCell>
         </TableRow>
       )
     }
   })
 
   return (
-    <TableContainer component={Paper}>
+    <TableContainer className={classes.container} component={Paper}>
+      <Typography className={classes.title} variant="h5">Pending Orders</Typography>
       <Table aria-label="simple table">
         <TableHead>
           <TableRow>
@@ -53,7 +56,7 @@ function OrderTable({orders, completeOrder}) {
             <TableCell align="center">Note</TableCell>
             <TableCell align="right">Time</TableCell>
             <TableCell align="right">Urgency</TableCell>
-            <TableCell align="center"></TableCell>
+            <TableCell className={classes.button} align="center"></TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
